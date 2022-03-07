@@ -6,6 +6,8 @@ import com.starwarsresistence.starWarsResistence.gateways.persistence.implementa
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @AllArgsConstructor
 public class RebelPersistenceGatewayImplementation implements RebelPersistenceGateway {
@@ -16,5 +18,10 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
     public Rebel save(Rebel rebel) {
         persistenceRepository.save(rebel);
         return rebel;
+    }
+
+    @Override
+    public List<Rebel> findAll() {
+        return persistenceRepository.findAll();
     }
 }

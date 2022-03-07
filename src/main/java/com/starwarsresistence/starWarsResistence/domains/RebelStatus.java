@@ -21,9 +21,9 @@ public class RebelStatus {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private RebelStatusEnum status;
+    private RebelStatusEnum status = RebelStatusEnum.REBEL;
 
-    @Column(columnDefinition = "integer default 0")
-    private Integer reports = 0;
+    @Column
+    private int reports = 0;
 
 }
