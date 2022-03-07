@@ -2,6 +2,7 @@ package com.starwarsresistence.starWarsResistence.gateways.controllers;
 
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
+import com.starwarsresistence.starWarsResistence.domains.itemTrade.ItemTrade;
 import com.starwarsresistence.starWarsResistence.usecases.CreateRebel;
 import com.starwarsresistence.starWarsResistence.usecases.ListRebels;
 import com.starwarsresistence.starWarsResistence.usecases.ReportRebel;
@@ -46,5 +47,10 @@ public class RebelController {
     @ResponseStatus(HttpStatus.OK)
     public void reportRebel(@PathVariable("id") Long id){
         reportRebel.execute(id);
+    }
+
+    @GetMapping("/trade") //TODO
+    public int tradeItems(@RequestBody ItemTrade itemTrade){
+        return itemTrade.getNumberOfItems2();
     }
 }
