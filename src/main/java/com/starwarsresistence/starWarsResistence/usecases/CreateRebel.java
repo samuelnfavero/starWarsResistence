@@ -4,12 +4,18 @@ import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.usecases.validators.CreateRebelValidator;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.locks.StampedLock;
 
+@Component
+@AllArgsConstructor
+@NoArgsConstructor
 public class CreateRebel {
 
     private CreateRebelValidator createRebelValidator;

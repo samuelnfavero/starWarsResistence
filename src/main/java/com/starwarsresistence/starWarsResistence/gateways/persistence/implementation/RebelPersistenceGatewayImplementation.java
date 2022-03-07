@@ -4,7 +4,9 @@ import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.repository.DataBasePersistenceRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Component;
 
+@Component
 @AllArgsConstructor
 public class RebelPersistenceGatewayImplementation implements RebelPersistenceGateway {
 
