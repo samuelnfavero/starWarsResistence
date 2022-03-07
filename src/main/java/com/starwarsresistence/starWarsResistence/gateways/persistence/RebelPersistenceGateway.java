@@ -13,4 +13,6 @@ public interface RebelPersistenceGateway {
     Rebel findById(Long id);
 
     void updateCoordinates(Coordinates coordinates);
+
+    void reportRebel(Long id);
 }

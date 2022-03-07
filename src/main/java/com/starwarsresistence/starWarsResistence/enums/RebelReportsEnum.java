@@ -6,9 +6,9 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum RebelStatusEnum {
-    TRAITOR("Traidor"),
-    REBEL("Rebelde");
+public enum RebelReportsEnum {
+    IS_NOT_A_TRAITOR(2),
+    IS_A_TRAITOR(3);
 
-    private String rebelStatus;
+    public int numberOfReports;
 }

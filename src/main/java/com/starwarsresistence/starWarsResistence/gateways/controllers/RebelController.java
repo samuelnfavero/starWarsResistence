@@ -4,7 +4,9 @@ import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.usecases.CreateRebel;
 import com.starwarsresistence.starWarsResistence.usecases.ListRebels;
+import com.starwarsresistence.starWarsResistence.usecases.ReportRebel;
 import com.starwarsresistence.starWarsResistence.usecases.UpdateCoordinates;
+import jdk.javadoc.doclet.Reporter;
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,7 @@ public class RebelController {
     private CreateRebel createRebel;
     private ListRebels listRebels;
     private UpdateCoordinates updateCoordinates;
+    private ReportRebel reportRebel;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -37,5 +40,11 @@ public class RebelController {
     @ResponseStatus(HttpStatus.OK)
     public void updateCoordinates(@RequestBody Coordinates coordinates){
         updateCoordinates.execute(coordinates);
+    }
+
+    @PutMapping(path = "/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public void reportRebel(@PathVariable("id") Long id){
+        reportRebel.execute(id);
     }
 }

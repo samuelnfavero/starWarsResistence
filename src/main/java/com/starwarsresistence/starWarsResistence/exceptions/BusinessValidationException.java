@@ -7,4 +7,8 @@ public class BusinessValidationException extends RuntimeException {
     public BusinessValidationException(List<String> errorList) {
         super(errorList.stream().collect(Collectors.joining(";")));
     }
+
+    public BusinessValidationException(String errorMessage) {
+        super(errorMessage);
+    }
 }
