@@ -12,6 +12,7 @@ public class CreateRebelValidator {
     public List<String> validate(Rebel rebel) {
         List<String> errorList = new ArrayList<>();
 
+        //TODO
 
         return errorList;
     }

@@ -5,14 +5,10 @@ import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationEx
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.usecases.validators.CreateRebelValidator;
 import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
-
 import java.util.List;
-import java.util.Properties;
-import java.util.concurrent.locks.StampedLock;
+
 
 @Component
 @AllArgsConstructor

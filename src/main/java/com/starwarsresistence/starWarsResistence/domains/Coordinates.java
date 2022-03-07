@@ -12,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Setter
 @Getter
-public class Localization {
+public class Coordinates {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
