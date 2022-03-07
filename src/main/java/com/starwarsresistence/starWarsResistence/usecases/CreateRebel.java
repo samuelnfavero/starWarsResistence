@@ -15,13 +15,13 @@ public class CreateRebel {
     private CreateRebelValidator createRebelValidator;
     private RebelPersistenceGateway rebelPersistenceGateway;
 
-    public void execute(Rebel rebel){
+    public Rebel execute(Rebel rebel){
         List<String> errorList = createRebelValidator.validate(rebel);
 
         if(!CollectionUtils.isEmpty(errorList)){
             throw new BusinessValidationException(errorList);
         }
 
-        rebelPersistenceGateway.save(rebel);
+        return rebelPersistenceGateway.save(rebel);
     }
 }
