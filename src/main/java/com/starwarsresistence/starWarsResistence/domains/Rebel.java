@@ -3,6 +3,7 @@ package com.starwarsresistence.starWarsResistence.domains;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -22,10 +23,10 @@ public class Rebel {
     private String age;
     @Column
     private String genre;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Bag bag;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Localization localization;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private RebelStatus rebelStatus;
 }

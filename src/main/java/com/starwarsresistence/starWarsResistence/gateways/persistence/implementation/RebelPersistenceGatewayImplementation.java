@@ -14,7 +14,6 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
 
     @Override
     public Rebel save(Rebel rebel) {
-
         persistenceRepository.save(rebel);
         return rebel;
     }

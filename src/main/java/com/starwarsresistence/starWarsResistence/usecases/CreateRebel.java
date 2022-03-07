@@ -6,6 +6,7 @@ import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersi
 import com.starwarsresistence.starWarsResistence.usecases.validators.CreateRebelValidator;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -15,7 +16,6 @@ import java.util.concurrent.locks.StampedLock;
 
 @Component
 @AllArgsConstructor
-@NoArgsConstructor
 public class CreateRebel {
 
     private CreateRebelValidator createRebelValidator;

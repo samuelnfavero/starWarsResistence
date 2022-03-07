@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 
@@ -20,8 +21,9 @@ public class RebelStatus {
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private RebelStatusEnum status = RebelStatusEnum.REBEL;
+    private RebelStatusEnum status;
 
-    @Column
-    private int reports;
+    @Column(columnDefinition = "integer default 0")
+    private Integer reports = 0;
+
 }
