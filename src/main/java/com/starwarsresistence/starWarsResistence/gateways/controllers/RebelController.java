@@ -2,12 +2,11 @@ package com.starwarsresistence.starWarsResistence.gateways.controllers;
 
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
-import com.starwarsresistence.starWarsResistence.domains.itemTrade.ItemTrade;
+import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.usecases.CreateRebel;
 import com.starwarsresistence.starWarsResistence.usecases.ListRebels;
 import com.starwarsresistence.starWarsResistence.usecases.ReportRebel;
 import com.starwarsresistence.starWarsResistence.usecases.UpdateCoordinates;
-import jdk.javadoc.doclet.Reporter;
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -50,7 +49,7 @@ public class RebelController {
     }
 
     @GetMapping("/trade") //TODO
-    public int tradeItems(@RequestBody ItemTrade itemTrade){
+    public int tradeItems(@RequestBody Trade itemTrade){
         return itemTrade.getNumberOfItems2();
     }
 }
