@@ -3,6 +3,7 @@ package com.starwarsresistence.starWarsResistence.gateways.controllers;
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
 import com.starwarsresistence.starWarsResistence.usecases.*;
 import lombok.AllArgsConstructor;
 
@@ -24,8 +25,8 @@ public class RebelController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Rebel save(@RequestBody Rebel rebel){
-        return createRebel.execute(rebel);
+    public Rebel save(@RequestBody RebelRequest rebelRequest){
+        return createRebel.execute(rebelRequest);
     }
 
     @GetMapping

@@ -18,14 +18,22 @@ public class Rebel {
 
     @Column
     private String name;
+
     @Column
     private String age;
+
     @Column
     private String genre;
+
+    @Column
+    private int reports = 0;
+
+    @Column
+    private boolean isATraitor = false;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Bag bag;
+
     @OneToOne(cascade = CascadeType.ALL)
     private Coordinates coordinates;
-    @OneToOne(cascade = CascadeType.ALL)
-    private RebelStatus rebelStatus;
 }

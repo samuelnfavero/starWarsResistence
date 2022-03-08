@@ -7,11 +7,12 @@ import com.starwarsresistence.starWarsResistence.domains.itemTrade.RebelTradeDat
 import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
 import com.starwarsresistence.starWarsResistence.enums.RebelReportsEnum;
-import com.starwarsresistence.starWarsResistence.enums.RebelStatusEnum;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.repository.DataBasePersistenceRepository;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.validators.TradeValidator;
+import com.starwarsresistence.starWarsResistence.mappers.RebelMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -25,10 +26,14 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
 
     DataBasePersistenceRepository persistenceRepository;
     TradeValidator tradeValidator;
+    private final RebelMapper rebelMapper = RebelMapper.INSTANCE;
 
     @Override
-    public Rebel save(Rebel rebel) {
+    public Rebel save(RebelRequest rebelRequest) {
+
+        Rebel rebel = rebelMapper.toModel(rebelRequest);
         persistenceRepository.save(rebel);
+
         return rebel;
     }
 
@@ -60,6 +65,7 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
     public void trade(Trade trade) {
         trade.tradePointsValidator(trade.getRebelTradeData1().getRebelTradeBag(), trade.getRebelTradeData2().getRebelTradeBag());
         Trade tradeWithRebels = setRebelsOnTrade(trade);
+        trade.isATraitorValidator(trade.getRebelTradeData1().getRebel(), trade.getRebelTradeData2().getRebel());
         validateTrade(tradeWithRebels.getRebelTradeData1());
         validateTrade(tradeWithRebels.getRebelTradeData2());
         trade = makingTrade(tradeWithRebels);
@@ -165,13 +171,13 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
 
     private Rebel giveAReportOrDefineAsATraitor(Long id){
         Rebel rebel = persistenceRepository.findById(id).get();
-        int reports = rebel.getRebelStatus().getReports();
+        int reports = rebel.getReports();
         if(reports < RebelReportsEnum.IS_NOT_A_TRAITOR.getNumberOfReports()){
             reports++;
-            rebel.getRebelStatus().setReports(reports);
+            rebel.setReports(reports);
         }else{
-            rebel.getRebelStatus().setReports(RebelReportsEnum.IS_A_TRAITOR.getNumberOfReports());
-            rebel.getRebelStatus().setStatus(RebelStatusEnum.TRAITOR);
+            rebel.setReports(RebelReportsEnum.IS_A_TRAITOR.getNumberOfReports());
+            rebel.setATraitor(true);
         }
         return rebel;
     }

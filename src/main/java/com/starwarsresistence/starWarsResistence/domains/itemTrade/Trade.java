@@ -26,6 +26,12 @@ public class Trade {
         }
     }
 
+    public void isATraitorValidator(Rebel rebel1, Rebel rebe2){
+        if(rebel1.isATraitor()|| rebe2.isATraitor()){
+            throw new BusinessValidationException("Traidores não podem fazer negociações.");
+        }
+    }
+
     private int pointsCalculator(List<Item> tradeBag){
         return tradeBag.stream()
                 .reduce(0, (parcial, item) -> parcial + item.pointsPerItem(), Integer::sum);
