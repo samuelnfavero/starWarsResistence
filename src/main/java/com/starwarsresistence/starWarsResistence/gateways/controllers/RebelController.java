@@ -46,8 +46,9 @@ public class RebelController {
         reportRebel.execute(id);
     }
 
-    @PutMapping("/trade") //TODO
-    public void tradeRebelItems(@RequestBody Trade trade){
+    @PutMapping("/trade")
+    public void tradeRebelItems(@RequestBody Trade trade) {
         tradeRebelItems.execute(trade);
     }
+
 }

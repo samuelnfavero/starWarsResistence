@@ -140,7 +140,13 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
             }
         });
 
-        errorList.remove(null);
+
+
+            for(int i =0; i <= errorList.size(); i++){
+                errorList.remove(null);
+            }
+
+
         if (!CollectionUtils.isEmpty(errorList)) {
             throw new BusinessValidationException(errorList);
         }
