@@ -50,6 +50,6 @@ public class RebelController {
 
     @GetMapping("/trade") //TODO
     public int tradeItems(@RequestBody Trade itemTrade){
-        return itemTrade.getNumberOfItems2();
+        return 0;//itemTrade.getNumberOfItems2();
     }
 }
