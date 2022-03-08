@@ -6,7 +6,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 public enum ItemsEnum {
-    WEAPONS(4),
+    WEAPON(4),
     AMMUNITION(3),
     WATER(2),
     FOOD(1);

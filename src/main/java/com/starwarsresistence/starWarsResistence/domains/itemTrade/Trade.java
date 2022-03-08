@@ -1,21 +1,21 @@
 package com.starwarsresistence.starWarsResistence.domains.itemTrade;
 
-import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
+import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
 @AllArgsConstructor
 @Getter
+@Setter
 public class Trade {
 
-    private Long rebelId1;
-    private Long rebelId2;
-    private List<Item> tradeBagRebel1;
-    private List<Item> tradeBagRebel2;
+    private RebelTradeData rebelTradeData1;
+    private RebelTradeData rebelTradeData2;
+
 
     public void tradePointsValidator(List<Item> tradeBag1, List<Item> tradeBag2){
         int pointsRebel1 = pointsCalculator(tradeBag1);
@@ -24,8 +24,6 @@ public class Trade {
         if(pointsRebel1 != pointsRebel2){
             throw new BusinessValidationException("A troca não pode ser realizada. Pontuações diferentes");
         }
-
-
     }
 
     private int pointsCalculator(List<Item> tradeBag){

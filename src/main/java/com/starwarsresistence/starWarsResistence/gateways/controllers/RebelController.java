@@ -3,10 +3,7 @@ package com.starwarsresistence.starWarsResistence.gateways.controllers;
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
-import com.starwarsresistence.starWarsResistence.usecases.CreateRebel;
-import com.starwarsresistence.starWarsResistence.usecases.ListRebels;
-import com.starwarsresistence.starWarsResistence.usecases.ReportRebel;
-import com.starwarsresistence.starWarsResistence.usecases.UpdateCoordinates;
+import com.starwarsresistence.starWarsResistence.usecases.*;
 import lombok.AllArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -23,6 +20,7 @@ public class RebelController {
     private ListRebels listRebels;
     private UpdateCoordinates updateCoordinates;
     private ReportRebel reportRebel;
+    private TradeRebelItems tradeRebelItems;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -48,8 +46,8 @@ public class RebelController {
         reportRebel.execute(id);
     }
 
-    @GetMapping("/trade") //TODO
-    public int tradeItems(@RequestBody Trade itemTrade){
-        return itemTrade.getNumberOfItems2();
+    @PutMapping("/trade") //TODO
+    public void tradeRebelItems(@RequestBody Trade trade){
+        tradeRebelItems.execute(trade);
     }
 }
