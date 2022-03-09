@@ -2,7 +2,6 @@ package com.starwarsresistence.starWarsResistence.usecases;
 
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.usecases.validators.CreateRebelValidator;
 import lombok.AllArgsConstructor;
@@ -18,14 +17,14 @@ public class CreateRebel {
     private CreateRebelValidator createRebelValidator;
     private RebelPersistenceGateway rebelPersistenceGateway;
 
-    public Rebel execute(RebelRequest rebelRequest){
+    public Rebel execute(Rebel rebel){
 
-        List<String> errorList = createRebelValidator.validate(rebelRequest);
+        List<String> errorList = createRebelValidator.validate(rebel);
 
         if(!CollectionUtils.isEmpty(errorList)){
             throw new BusinessValidationException(errorList);
         }
 
-        return rebelPersistenceGateway.save(rebelRequest);
+        return rebelPersistenceGateway.save(rebel);
     }
 }

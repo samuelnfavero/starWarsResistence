@@ -8,7 +8,7 @@ import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.R
 import java.util.List;
 
 public interface RebelPersistenceGateway {
-    Rebel save(RebelRequest rebelRequest);
+    Rebel save(Rebel rebel);
 
     List<Rebel> findAll();
 

@@ -8,11 +8,9 @@ import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
 import com.starwarsresistence.starWarsResistence.enums.RebelReportsEnum;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.repository.DataBasePersistenceRepository;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.validators.TradeValidator;
-import com.starwarsresistence.starWarsResistence.mappers.RebelMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -26,14 +24,12 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
 
     DataBasePersistenceRepository persistenceRepository;
     TradeValidator tradeValidator;
-    private final RebelMapper rebelMapper = RebelMapper.INSTANCE;
+
 
     @Override
-    public Rebel save(RebelRequest rebelRequest) {
+    public Rebel save(Rebel rebel) {
 
-        Rebel rebel = rebelMapper.toModel(rebelRequest);
         persistenceRepository.save(rebel);
-
         return rebel;
     }
 

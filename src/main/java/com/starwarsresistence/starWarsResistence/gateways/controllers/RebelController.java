@@ -4,6 +4,8 @@ import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
+import com.starwarsresistence.starWarsResistence.mappers.RebelMapper;
 import com.starwarsresistence.starWarsResistence.usecases.*;
 import lombok.AllArgsConstructor;
 
@@ -22,11 +24,16 @@ public class RebelController {
     private UpdateCoordinates updateCoordinates;
     private ReportRebel reportRebel;
     private TradeRebelItems tradeRebelItems;
+    private final RebelMapper rebelMapper = RebelMapper.INSTANCE;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Rebel save(@RequestBody RebelRequest rebelRequest){
-        return createRebel.execute(rebelRequest);
+    public RebelResponse save(@RequestBody RebelRequest rebelRequest){
+        Rebel rebel = rebelMapper.toModel(rebelRequest);
+
+        Rebel savedRebel = createRebel.execute(rebel);
+        RebelResponse rebelResponse =  new RebelResponse(savedRebel); //TODO
+        return rebelResponse;
     }
 
     @GetMapping

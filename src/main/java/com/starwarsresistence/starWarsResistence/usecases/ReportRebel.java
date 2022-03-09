@@ -1,7 +1,6 @@
 package com.starwarsresistence.starWarsResistence.usecases;
 
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.RebelController;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
