@@ -10,7 +10,7 @@ import java.util.List;
 @Component
 public class CreateRebelValidator {
 
-    public List<String> validate(Rebel rebel) {
+    public List<String> validate(RebelRequest rebelRequest) {
         List<String> errorList = new ArrayList<>();
 
         //TODO

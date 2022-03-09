@@ -8,9 +8,13 @@ import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
 import com.starwarsresistence.starWarsResistence.enums.RebelReportsEnum;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.repository.DataBasePersistenceRepository;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.validators.TradeValidator;
+import com.starwarsresistence.starWarsResistence.mappers.RebelRequestMapper;
+import com.starwarsresistence.starWarsResistence.mappers.RebelResponseMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -24,13 +28,15 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
 
     DataBasePersistenceRepository persistenceRepository;
     TradeValidator tradeValidator;
-
+    private final RebelRequestMapper rebelRequestMapper = RebelRequestMapper.INSTANCE;
+    private final RebelResponseMapper rebelResponseMapper = RebelResponseMapper.INSTANCE;
 
     @Override
-    public Rebel save(Rebel rebel) {
+    public RebelResponse save(RebelRequest rebelRequest) {
 
-        persistenceRepository.save(rebel);
-        return rebel;
+        Rebel rebel = rebelRequestMapper.toModel(rebelRequest);
+        Rebel savedRebel = persistenceRepository.save(rebel);
+        return rebelResponseMapper.toDTO(savedRebel);
     }
 
     @Override

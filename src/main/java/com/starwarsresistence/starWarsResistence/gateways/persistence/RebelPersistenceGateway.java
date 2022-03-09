@@ -4,11 +4,12 @@ import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 
 import java.util.List;
 
 public interface RebelPersistenceGateway {
-    Rebel save(Rebel rebel);
+    RebelResponse save(RebelRequest rebel);
 
     List<Rebel> findAll();
 
