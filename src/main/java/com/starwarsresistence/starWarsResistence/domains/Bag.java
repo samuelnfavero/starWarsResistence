@@ -1,9 +1,7 @@
 package com.starwarsresistence.starWarsResistence.domains;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.BagResponse;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Setter
 @Getter
+@Builder
 public class Bag {
 
     @Id
@@ -29,4 +28,12 @@ public class Bag {
 
     @Column
     private int food;
+
+    public Bag(BagResponse bagResponse){
+        id = bagResponse.getId();;
+        weapons = bagResponse.getWeapons();
+        ammunition = bagResponse.getAmmunition();
+        water = bagResponse.getWater();
+        food = bagResponse.getFood();
+    }
 }

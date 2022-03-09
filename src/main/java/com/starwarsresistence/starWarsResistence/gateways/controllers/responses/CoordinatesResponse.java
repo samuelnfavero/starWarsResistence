@@ -1,12 +1,11 @@
 package com.starwarsresistence.starWarsResistence.gateways.controllers.responses;
 
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @AllArgsConstructor
-
+@Getter
+@Setter
 @Builder
 public class CoordinatesResponse {
 
@@ -24,4 +23,15 @@ public class CoordinatesResponse {
         this.longitude = coordinates.getLongitude();
         this.galaxyName = coordinates.getGalaxyName();
     }
+
+    public Coordinates toModel(){
+        return Coordinates.builder()
+                .id(id)
+                .latitude(latitude)
+                .longitude(longitude)
+                .galaxyName(galaxyName)
+                .build();
+    }
+
+
 }

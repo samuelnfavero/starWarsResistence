@@ -1,8 +1,11 @@
 package com.starwarsresistence.starWarsResistence.usecases;
 
-import com.starwarsresistence.starWarsResistence.domains.Coordinates;
+
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.CoordinatesRequest;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
+import com.starwarsresistence.starWarsResistence.usecases.validators.UpdateCoordinatesValidator;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -13,18 +16,18 @@ import java.util.List;
 @AllArgsConstructor
 public class UpdateCoordinates {
 
-    private com.starwarsresistence.starWarsResistence.usecases.validators.UpdateCoordinatesValidator UpdateCoordinatesValidator;
+    private UpdateCoordinatesValidator updateCoordinatesValidator;
     private RebelPersistenceGateway rebelPersistenceGateway;
 
-    public void execute(Coordinates coordinates){
+    public void execute(CoordinatesResponse coordinatesResponse){
 
-        List<String> errorMEssages = UpdateCoordinatesValidator.validate(coordinates);
+        List<String> errorMEssages = updateCoordinatesValidator.validate(coordinatesResponse);
 
         if(!CollectionUtils.isEmpty(errorMEssages)){
             throw new BusinessValidationException(errorMEssages);
         }
 
-        rebelPersistenceGateway.updateCoordinates(coordinates);
+        rebelPersistenceGateway.updateCoordinates(coordinatesResponse);
 
     }
 }

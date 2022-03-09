@@ -1,9 +1,7 @@
 package com.starwarsresistence.starWarsResistence.domains;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,6 +10,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Setter
 @Getter
+@Builder
 public class Coordinates {
 
     @Id
@@ -26,4 +25,11 @@ public class Coordinates {
 
     @Column
     private String galaxyName;
+
+    public Coordinates(CoordinatesResponse coordinatesResponse){
+        id = coordinatesResponse.getId();
+        latitude = coordinatesResponse.getLatitude();
+        longitude = coordinatesResponse.getLongitude();
+        galaxyName = coordinatesResponse.getGalaxyName();
+    }
 }

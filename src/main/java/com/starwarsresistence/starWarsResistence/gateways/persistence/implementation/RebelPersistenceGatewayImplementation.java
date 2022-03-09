@@ -8,7 +8,9 @@ import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
 import com.starwarsresistence.starWarsResistence.enums.RebelReportsEnum;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.CoordinatesRequest;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.repository.DataBasePersistenceRepository;
@@ -40,8 +42,10 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
     }
 
     @Override
-    public List<Rebel> findAll() {
-        return persistenceRepository.findAll();
+    public List<RebelResponse> findAll() {
+        List<RebelResponse> allRebelsResponse = new ArrayList<>();
+        persistenceRepository.findAll().forEach(rebel -> allRebelsResponse.add(new RebelResponse(rebel)));
+        return allRebelsResponse;
     }
 
 
@@ -51,8 +55,9 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
     }
 
     @Override
-    public void updateCoordinates(Coordinates coordinates) {
-        Rebel rebel = findById(coordinates.getId());
+    public void updateCoordinates(CoordinatesResponse coordinatesResponse) {
+        Rebel rebel = findById(coordinatesResponse.getId());
+        Coordinates coordinates = coordinatesResponse.toModel();
         rebel.setCoordinates(coordinates);
         persistenceRepository.save(rebel);
     }

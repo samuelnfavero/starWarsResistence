@@ -3,7 +3,9 @@ package com.starwarsresistence.starWarsResistence.gateways.controllers;
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.CoordinatesRequest;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import com.starwarsresistence.starWarsResistence.mappers.RebelRequestMapper;
 import com.starwarsresistence.starWarsResistence.mappers.RebelResponseMapper;
@@ -30,22 +32,20 @@ public class RebelController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Rebel save(@RequestBody RebelRequest rebelRequest){
-
-        RebelResponse savedRebel = createRebel.execute(rebelRequest);
-        return rebelResponseMapper.toModel(savedRebel); //TODO
+    public RebelResponse save(@RequestBody RebelRequest rebelRequest){
+        return createRebel.execute(rebelRequest);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.FOUND)
-    public List<Rebel> list(){
+    public List<RebelResponse> list(){
         return listRebels.execute();
     }
 
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
-    public void updateCoordinates(@RequestBody Coordinates coordinates){
-        updateCoordinates.execute(coordinates);
+    public void updateCoordinates(@RequestBody CoordinatesResponse coordinatesResponse){
+        updateCoordinates.execute(coordinatesResponse);
     }
 
     @PutMapping(path = "/{id}")
