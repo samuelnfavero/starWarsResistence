@@ -2,6 +2,7 @@ package com.starwarsresistence.starWarsResistence.gateways.controllers.requests;
 
 import com.starwarsresistence.starWarsResistence.domains.Bag;
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
+import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.sun.istack.NotNull;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,16 @@ public class RebelRequest {
 
     @ApiModelProperty(required = true, value="Rebel's coordinates", example = "Male")
     private CoordinatesRequest coordinates;
+
+    public Rebel toModel(){
+        return Rebel.builder()
+                .name(name)
+                .age(age)
+                .genre(genre)
+                .bag(new Bag(bag))
+                .coordinates(new Coordinates(coordinates))
+                .build();
+    }
 
 
 }

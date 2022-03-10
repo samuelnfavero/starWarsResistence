@@ -1,4 +1,4 @@
-package com.starwarsresistence.starWarsResistence.gateways.persistence.implementation;
+package com.starwarsresistence.starWarsResistence.gateways.persistence.database;
 
 import com.starwarsresistence.starWarsResistence.domains.Coordinates;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
@@ -8,21 +8,23 @@ import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
 import com.starwarsresistence.starWarsResistence.enums.RebelReportsEnum;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.CoordinatesRequest;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.BagResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.MessageResponseDTO;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
-import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.repository.DataBasePersistenceRepository;
-import com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.validators.TradeValidator;
-import com.starwarsresistence.starWarsResistence.mappers.RebelRequestMapper;
-import com.starwarsresistence.starWarsResistence.mappers.RebelResponseMapper;
+import com.starwarsresistence.starWarsResistence.gateways.persistence.ReportsGateway;
+import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DataBasePersistenceRepository;
+import com.starwarsresistence.starWarsResistence.gateways.persistence.database.validators.TradeValidator;
+
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
@@ -30,15 +32,13 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
 
     DataBasePersistenceRepository persistenceRepository;
     TradeValidator tradeValidator;
-    private final RebelRequestMapper rebelRequestMapper = RebelRequestMapper.INSTANCE;
-    private final RebelResponseMapper rebelResponseMapper = RebelResponseMapper.INSTANCE;
 
     @Override
     public RebelResponse save(RebelRequest rebelRequest) {
 
-        Rebel rebel = rebelRequestMapper.toModel(rebelRequest);
+        Rebel rebel = rebelRequest.toModel();
         Rebel savedRebel = persistenceRepository.save(rebel);
-        return rebelResponseMapper.toDTO(savedRebel);
+        return new RebelResponse(savedRebel);
     }
 
     @Override
@@ -99,6 +99,7 @@ public class RebelPersistenceGatewayImplementation implements RebelPersistenceGa
 
         return trade;
     }
+
 
     private Rebel[] tradeBagItems(Rebel rebelWhoLosesItems, List<Item> tradeBag, Rebel rebelWhoReceiveItems){
         tradeBag.forEach(item -> {

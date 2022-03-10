@@ -1,5 +1,6 @@
 package com.starwarsresistence.starWarsResistence.domains;
 
+import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.BagRequest;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.BagResponse;
 import lombok.*;
 
@@ -35,5 +36,12 @@ public class Bag {
         ammunition = bagResponse.getAmmunition();
         water = bagResponse.getWater();
         food = bagResponse.getFood();
+    }
+
+    public Bag(BagRequest bagRequest){
+        weapons = bagRequest.getWeapons();
+        ammunition = bagRequest.getAmmunition();
+        water = bagRequest.getWater();
+        food = bagRequest.getFood();
     }
 }

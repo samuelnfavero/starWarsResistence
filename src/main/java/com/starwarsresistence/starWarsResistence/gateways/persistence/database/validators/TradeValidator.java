@@ -1,4 +1,4 @@
-package com.starwarsresistence.starWarsResistence.gateways.persistence.implementation.validators;
+package com.starwarsresistence.starWarsResistence.gateways.persistence.database.validators;
 
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import org.springframework.stereotype.Component;

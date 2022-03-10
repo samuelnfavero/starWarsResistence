@@ -1,5 +1,6 @@
 package com.starwarsresistence.starWarsResistence.domains;
 
+import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import lombok.*;
 
 import javax.persistence.*;
