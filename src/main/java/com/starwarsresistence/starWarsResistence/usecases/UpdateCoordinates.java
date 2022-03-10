@@ -21,10 +21,10 @@ public class UpdateCoordinates {
 
     public void execute(CoordinatesResponse coordinatesResponse){
 
-        List<String> errorMEssages = updateCoordinatesValidator.validate(coordinatesResponse);
+        List<String> errorMessages = updateCoordinatesValidator.validate(coordinatesResponse);
 
-        if(!CollectionUtils.isEmpty(errorMEssages)){
-            throw new BusinessValidationException(errorMEssages);
+        if(!CollectionUtils.isEmpty(errorMessages)){
+            throw new BusinessValidationException(errorMessages);
         }
 
         rebelPersistenceGateway.updateCoordinates(coordinatesResponse);

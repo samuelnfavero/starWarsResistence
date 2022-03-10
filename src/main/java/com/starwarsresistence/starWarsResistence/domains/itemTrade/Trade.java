@@ -3,6 +3,7 @@ package com.starwarsresistence.starWarsResistence.domains.itemTrade;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,6 +12,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 public class Trade {
 
     private RebelTradeData rebelTradeData1;
