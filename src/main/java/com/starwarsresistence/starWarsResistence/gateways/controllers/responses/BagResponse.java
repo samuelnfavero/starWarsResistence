@@ -29,13 +29,4 @@ public class BagResponse {
         this.food = bag.getFood();
     }
 
-    public Bag toModel(BagResponse bagResponse){
-        return Bag.builder()
-                .id(bagResponse.getId())
-                .weapons(bagResponse.getWeapons())
-                .ammunition(bagResponse.getAmmunition())
-                .water(bagResponse.getWater())
-                .food(bagResponse.getFood())
-                .build();
-    }
 }

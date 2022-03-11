@@ -42,16 +42,4 @@ public class RebelResponse {
         coordinates = new CoordinatesResponse(rebel.getCoordinates());
     }
 
-    public Rebel toModel(){
-        return Rebel.builder()
-                .id(id)
-                .name(name)
-                .age(age)
-                .genre(genre)
-                .reports(reports)
-                .isATraitor(isATraitor)
-                .bag(new Bag(bag))
-                .coordinates(new Coordinates(coordinates))
-                .build();
-    }
 }

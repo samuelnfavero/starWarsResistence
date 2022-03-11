@@ -1,7 +1,6 @@
 package com.starwarsresistence.starWarsResistence.gateways.controllers.requests;
 
-import com.starwarsresistence.starWarsResistence.domains.Coordinates;
-import com.sun.istack.NotNull;
+
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
@@ -24,12 +23,4 @@ public class CoordinatesRequest {
     private String galaxyName;
 
 
-    public Coordinates toModel(){
-        return Coordinates.builder()
-                .id(id)
-                .latitude(latitude)
-                .longitude(longitude)
-                .galaxyName(galaxyName)
-                .build();
-    }
 }

@@ -1,6 +1,6 @@
 package com.starwarsresistence.starWarsResistence.usecases;
 
-import com.starwarsresistence.starWarsResistence.domains.Coordinates;
+
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
@@ -10,10 +10,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
+
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import static org.mockito.Mockito.*;
@@ -32,8 +32,6 @@ public class UpdateCoordinatesTest {
     @Test
     void shouldThrowAnExceptionWhenValidationFailed(){
         CoordinatesResponse coordinates = CoordinatesResponse.builder().build();
-
-
         when(updateCoordinatesValidator.validate(coordinates)).thenReturn(List.of("Some validation didn't pass"));
 
         BusinessValidationException exception = Assertions.assertThrows(BusinessValidationException.class, ()-> updateCoordinates.execute(coordinates));
