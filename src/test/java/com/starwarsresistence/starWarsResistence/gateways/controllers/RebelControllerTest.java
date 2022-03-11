@@ -81,5 +81,13 @@ public class RebelControllerTest {
         verify(tradeRebelItems, times(1)).execute(trade);
     }
 
+    @Test
+    void shouldReportARebel(){
+        Long id = null;
+        doNothing().when(reportRebel).execute(id);
+        rebelController.reportRebel(id);
+        verify(reportRebel,times(1)).execute(id);
+    }
+
 
 }
