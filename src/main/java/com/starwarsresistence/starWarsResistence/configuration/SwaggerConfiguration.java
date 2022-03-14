@@ -27,7 +27,7 @@ public class SwaggerConfiguration {
     }
 
     private ApiInfo buildApiInfo() {
-        return new ApiInfoBuilder().title("Movies API").description("CRUD Movie operations").build();
+        return new ApiInfoBuilder().title("").description("CRUD operations").build();
     }
 }
 
