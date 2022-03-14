@@ -20,13 +20,9 @@ mvn spring-boot:run
 <p>Após executar o comando acima, basta apenas abrir o seguinte endereço e visualizar a execução do projeto:</p><br>
 
 ```
-http://localhost:8080/personapi
+http://localhost:8080/starwarsresistence
 ```
-<p>Link do projeto no Heroku:<br>
 
-```
-https://peopleeapi.herokuapp.com/personapi
-```
 <h1>Teste dos métodos com Postman</h1>
 <p><b>Save</b><p>
 
