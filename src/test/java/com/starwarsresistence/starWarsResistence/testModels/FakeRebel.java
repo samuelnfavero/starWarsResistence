@@ -80,6 +80,7 @@ public class FakeRebel {
                 .age("33")
                 .genre("Masc")
                 .reports(0)
+                .isATraitor(false)
                 .bag(createFakeBagResponse())
                 .coordinates(createFakeCoordinatesResponse())
                 .build();

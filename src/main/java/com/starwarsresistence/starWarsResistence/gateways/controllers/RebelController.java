@@ -52,6 +52,7 @@ public class RebelController {
     }
 
     @PutMapping("/trade")
+    @ResponseStatus(HttpStatus.OK)
     public void tradeRebelItems(@RequestBody Trade trade) {
         tradeRebelItems.execute(trade);
     }

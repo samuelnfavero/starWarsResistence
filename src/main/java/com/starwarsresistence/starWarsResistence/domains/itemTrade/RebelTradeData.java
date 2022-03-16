@@ -9,7 +9,6 @@ import java.util.List;
 
 @Getter
 @Setter
-//@Builder
 public class RebelTradeData {
     private Long rebelId;
     private List<Item> rebelTradeBag;
@@ -20,10 +19,5 @@ public class RebelTradeData {
         this.rebelId = rebelId;
         this.rebelTradeBag = tradeBagRebel;
     }
-//
-//    public RebelTradeData(Long rebelId, List<Item> rebelTradeBag, Rebel rebel) {
-//        this.rebelId = rebelId;
-//        this.rebelTradeBag = rebelTradeBag;
-//        this.rebel = rebel;
-//    }
+
 }

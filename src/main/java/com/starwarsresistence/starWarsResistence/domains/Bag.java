@@ -30,13 +30,7 @@ public class Bag {
     @Column
     private int food;
 
-    public Bag(BagResponse bagResponse){
-        id = bagResponse.getId();;
-        weapons = bagResponse.getWeapons();
-        ammunition = bagResponse.getAmmunition();
-        water = bagResponse.getWater();
-        food = bagResponse.getFood();
-    }
+
 
     public Bag(BagRequest bagRequest){
         weapons = bagRequest.getWeapons();

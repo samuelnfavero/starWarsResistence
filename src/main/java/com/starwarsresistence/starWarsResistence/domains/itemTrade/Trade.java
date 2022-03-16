@@ -28,8 +28,8 @@ public class Trade {
         }
     }
 
-    public void isATraitorValidator(Rebel rebel1, Rebel rebe2){
-        if(rebel1.isATraitor()|| rebe2.isATraitor()){
+    public void isATraitorValidator(Rebel rebel1, Rebel rebel2){
+        if(rebel1.isATraitor() || rebel2.isATraitor()){
             throw new BusinessValidationException("Traidores não podem fazer negociações.");
         }
     }

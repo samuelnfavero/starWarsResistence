@@ -1,10 +1,7 @@
 package com.starwarsresistence.starWarsResistence.gateways.persistence;
 
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.BagRequest;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.CoordinatesRequest;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.BagResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.database.RebelPersistenceGatewayImplementation;
@@ -12,12 +9,10 @@ import com.starwarsresistence.starWarsResistence.gateways.persistence.database.r
 import com.starwarsresistence.starWarsResistence.gateways.persistence.database.validators.TradeValidator;
 import com.starwarsresistence.starWarsResistence.testModels.FakeCoordinates;
 import com.starwarsresistence.starWarsResistence.testModels.FakeRebel;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -77,7 +72,7 @@ public class RebelPersistenceGatewayImplementationTest {
         assertEquals(fakeRebel.getAge(),rebel.getAge());
         assertEquals(fakeRebel.getGenre(),rebel.getGenre());
 
-        verify(persistenceRepository, timeout(1)).findById(id);
+        verify(persistenceRepository, times(1)).findById(id);
 
     }
 
