@@ -3,14 +3,12 @@ package com.starwarsresistence.starWarsResistence.gateways.persistence;
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.MessageResponseDTO;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.database.ReportsGatewayImplementation;
-import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DataBasePersistenceRepository;
+import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DatabasePersistenceRepository;
 import com.starwarsresistence.starWarsResistence.testModels.FakeRebel;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
@@ -22,7 +20,7 @@ import static org.mockito.Mockito.*;
 public class ReportsGatewayImplementationTest {
 
     @Mock
-    DataBasePersistenceRepository persistenceRepository;
+    DatabasePersistenceRepository persistenceRepository;
     @InjectMocks
     ReportsGatewayImplementation reportsGatewayImplementation;
 

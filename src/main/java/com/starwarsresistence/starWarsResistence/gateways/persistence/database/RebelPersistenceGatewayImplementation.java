@@ -9,13 +9,10 @@ import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
 import com.starwarsresistence.starWarsResistence.enums.RebelReportsEnum;
 import com.starwarsresistence.starWarsResistence.exceptions.BusinessValidationException;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.BagResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
-import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.MessageResponseDTO;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.RebelPersistenceGateway;
-import com.starwarsresistence.starWarsResistence.gateways.persistence.ReportsGateway;
-import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DataBasePersistenceRepository;
+import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DatabasePersistenceRepository;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.database.validators.TradeValidator;
 
 import lombok.AllArgsConstructor;
@@ -24,13 +21,12 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
 public class RebelPersistenceGatewayImplementation implements RebelPersistenceGateway {
 
-    DataBasePersistenceRepository persistenceRepository;
+    DatabasePersistenceRepository persistenceRepository;
     TradeValidator tradeValidator;
 
     @Override

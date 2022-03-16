@@ -19,6 +19,17 @@ import lombok.Setter;
 @Getter
 public class FakeRebel {
 
+    public static Rebel createFakeRebelWithoutId(){
+        return Rebel.builder()
+                .name("Jão")
+                .age("33")
+                .genre("Masc")
+                .isATraitor(false)
+                .reports(0)
+                .bag(createFakeBag())
+                .coordinates(createFakeCoordinates())
+                .build();
+    }
 
     public static Rebel createFakeRebel(){
         return Rebel.builder()

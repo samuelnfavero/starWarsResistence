@@ -5,7 +5,7 @@ import com.starwarsresistence.starWarsResistence.enums.ItemsEnum;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.BagResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.MessageResponseDTO;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.ReportsGateway;
-import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DataBasePersistenceRepository;
+import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DatabasePersistenceRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 public class ReportsGatewayImplementation implements ReportsGateway {
 
-    DataBasePersistenceRepository persistenceRepository;
+    DatabasePersistenceRepository persistenceRepository;
     @Override
     public MessageResponseDTO traitorPercentageReport() {
         List<Rebel> allRebels = persistenceRepository.findAll();

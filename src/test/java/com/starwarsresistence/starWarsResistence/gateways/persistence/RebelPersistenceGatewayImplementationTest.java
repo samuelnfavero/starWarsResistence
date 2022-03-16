@@ -1,14 +1,17 @@
 package com.starwarsresistence.starWarsResistence.gateways.persistence;
 
 import com.starwarsresistence.starWarsResistence.domains.Rebel;
+import com.starwarsresistence.starWarsResistence.domains.itemTrade.RebelTradeData;
+import com.starwarsresistence.starWarsResistence.domains.itemTrade.Trade;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.requests.RebelRequest;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.CoordinatesResponse;
 import com.starwarsresistence.starWarsResistence.gateways.controllers.responses.RebelResponse;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.database.RebelPersistenceGatewayImplementation;
-import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DataBasePersistenceRepository;
+import com.starwarsresistence.starWarsResistence.gateways.persistence.database.repository.DatabasePersistenceRepository;
 import com.starwarsresistence.starWarsResistence.gateways.persistence.database.validators.TradeValidator;
 import com.starwarsresistence.starWarsResistence.testModels.FakeCoordinates;
 import com.starwarsresistence.starWarsResistence.testModels.FakeRebel;
+import com.starwarsresistence.starWarsResistence.testModels.FakeTrade;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,9 +28,8 @@ import static org.mockito.Mockito.*;
 public class RebelPersistenceGatewayImplementationTest {
 
     @Mock
-    DataBasePersistenceRepository persistenceRepository;
-    @Mock
-    TradeValidator tradeValidator;
+    DatabasePersistenceRepository persistenceRepository;
+
     @InjectMocks
     RebelPersistenceGatewayImplementation rebelPersistenceGateway;
 
@@ -95,4 +97,5 @@ public class RebelPersistenceGatewayImplementationTest {
         rebelPersistenceGateway.reportRebel(id);
         verify(persistenceRepository,times(1)).save(any(Rebel.class));
     }
+
 }

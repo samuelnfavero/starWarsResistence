@@ -25,6 +25,14 @@ public class FakeTrade {
         return List.of(item, item, item);
     }
 
+    public static List<Item> createAEquivalentFakeItemList(){
+        Item item1 =  new Item(ItemsEnum.WEAPON,1);
+        Item item2 =  new Item(ItemsEnum.AMMUNITION,1);
+        Item item3 =  new Item(ItemsEnum.FOOD,1);
+
+        return List.of(item1, item1, item2, item3);
+    }
+
     public static List<Item> createAnotherFakeItemList(){
         Item item =  new Item(ItemsEnum.WEAPON,1);
         return List.of(item, item, item, item);
